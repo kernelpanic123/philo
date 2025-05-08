@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 10:52:30 by abtouait          #+#    #+#             */
-/*   Updated: 2025/05/04 12:51:46 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/05/08 14:15:34 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,12 @@ int	ft_atol(const char *str)
 		ft_error();
 	return (nombre * signe);
 }
-void init_struct(t_table *data, char **argv)
+void init_struct(t_table *data, char **argv, int argc)
 {
 	data->philo_nbr = ft_atol(argv[1]);
 	data->time_to_die = ft_atol(argv[2]);
 	data->time_to_eat = ft_atol(argv[3]);
 	data->time_to_sleep = ft_atol(argv[4]);
+	if (argc == 5)
+		data->must_eat = ft_atol(argv[5]);
 }
