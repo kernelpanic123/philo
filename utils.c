@@ -6,17 +6,12 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 10:52:30 by abtouait          #+#    #+#             */
-/*   Updated: 2025/05/08 14:15:34 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/05/09 19:54:55 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_error(void)
-{
-	write(1, "ERROR\n", 6);
-	exit(0);
-}
 
 int	ft_isdigit(int c)
 {
@@ -24,41 +19,45 @@ int	ft_isdigit(int c)
 		return (1);
 	return (0);
 }
-
-int	ft_atol(const char *str)
+size_t	get_time_in_u(void)
 {
-	long long int	i;
-	int				nombre;
-	int				signe;
+	struct timeval	time;
+
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+int	ft_atoi(const char *str)
+
+{
+	int	nombre;
+	int	signe;
+	int	i;
 
 	i = 0;
-	nombre = 0;
 	signe = 1;
+	nombre = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
 			signe = -signe;
 		i++;
 	}
-	while (str[i] != '\0')
+	while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9'))
 	{
-		if (!ft_isdigit(str[i]))
-			ft_error();
 		nombre = nombre * 10 + (str[i] - '0');
 		i++;
 	}
-	if ((nombre * signe) > 2147483647 || (nombre * signe) < -2147483648)
-		ft_error();
 	return (nombre * signe);
 }
-void init_struct(t_table *data, char **argv, int argc)
+
+void init_struct(t_table *data, int argc)
 {
-	data->philo_nbr = ft_atol(argv[1]);
-	data->time_to_die = ft_atol(argv[2]);
-	data->time_to_eat = ft_atol(argv[3]);
-	data->time_to_sleep = ft_atol(argv[4]);
-	if (argc == 5)
-		data->must_eat = ft_atol(argv[5]);
+	data->philo_nbr = 0;
+	data->time_to_die = 0;
+	data->time_to_eat = 0;
+	data->time_to_sleep = 0;
+	if (argc == 6)
+		data->must_eat = 0;
 }

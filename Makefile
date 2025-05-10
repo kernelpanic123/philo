@@ -6,15 +6,15 @@
 #    By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/03 15:25:25 by abtouait          #+#    #+#              #
-#    Updated: 2025/05/04 12:55:09 by abtouait         ###   ########.fr        #
+#    Updated: 2025/05/09 16:09:11 by abtouait         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-SRC = thread.c utils.c
+SRC = thread.c utils.c parse.c
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra
 
 
 OBJ = $(SRC:.c=.o)
