@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+         #
+#    By: abtouait <abtouait@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/03 15:25:25 by abtouait          #+#    #+#              #
-#    Updated: 2025/05/09 16:09:11 by abtouait         ###   ########.fr        #
+#    Updated: 2025/06/07 01:22:19 by abtouait         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-SRC = thread.c utils.c parse.c
+SRC = main.c utils.c parse.c philo.c utils2.c
 
 CFLAGS = -Wall -Wextra
 

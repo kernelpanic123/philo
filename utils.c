@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: abtouait <abtouait@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 10:52:30 by abtouait          #+#    #+#             */
-/*   Updated: 2025/05/09 19:54:55 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/06/07 02:38:55 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
 
 int	ft_isdigit(int c)
 {
@@ -19,11 +18,23 @@ int	ft_isdigit(int c)
 		return (1);
 	return (0);
 }
+
 size_t	get_time_in_u(void)
 {
 	struct timeval	time;
 
+	gettimeofday(&time, NULL);
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+int	ft_usleep(size_t milliseconds)
+{
+	size_t	start;
+
+	start = get_time_in_u();
+	while ((get_time_in_u() - start) < milliseconds)
+		usleep(500);
+	return (0);
 }
 
 int	ft_atoi(const char *str)
@@ -60,4 +71,5 @@ void init_struct(t_table *data, int argc)
 	data->time_to_sleep = 0;
 	if (argc == 6)
 		data->must_eat = 0;
+	data->start_time = 0;
 }
