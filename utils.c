@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abtouait <abtouait@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 10:52:30 by abtouait          #+#    #+#             */
-/*   Updated: 2025/06/07 02:38:55 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/07/10 18:07:39 by abder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,5 @@ void init_struct(t_table *data, int argc)
 	if (argc == 6)
 		data->must_eat = 0;
 	data->start_time = 0;
+	data->dead_flag = 0;
 }

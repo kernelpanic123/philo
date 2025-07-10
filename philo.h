@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abtouait <abtouait@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:27:20 by abtouait          #+#    #+#             */
-/*   Updated: 2025/06/07 03:15:12 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/07/10 19:06:51 by abder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,19 @@
 #include <sys/time.h>
 #include <stddef.h>
 
+typedef struct s_table t_table;
+
+typedef struct s_info
+{
+	pthread_mutex_t *l_fork;
+	pthread_mutex_t *r_fork;
+	int 			id;
+	pthread_t 		th;
+	t_table			*table; //pointeur vers la struct t_table(en gros toutes ces infos)
+	size_t			last_meal_time;
+	
+}t_info;
+
 typedef struct s_table
 {
 	int philo_nbr;
@@ -28,6 +41,9 @@ typedef struct s_table
 	int time_to_eat;
 	int must_eat;
 	size_t start_time;
+	pthread_mutex_t *forks;
+	t_info *philos;
+	int		dead_flag;
 	
 }t_table;
 
@@ -47,5 +63,9 @@ void put_values_struct(t_table *data, char **argv, int argc);
 
 //philo
 void one_philo(t_table *data);
+void philo_sleep(t_table *data);
+void philo_thinking(t_table *data);
+void initialize_forks(t_info *data, t_table *atad);
+void initialize_philo(t_info *data, t_table *atad);
 
 #endif
