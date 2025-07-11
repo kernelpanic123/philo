@@ -6,7 +6,7 @@
 /*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:30:17 by abtouait          #+#    #+#             */
-/*   Updated: 2025/07/10 14:09:15 by abder            ###   ########.fr       */
+/*   Updated: 2025/07/11 15:44:02 by abder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,8 @@ int main(int argc, char **argv)
 		one_philo(&data);
 		return (0);
 	}
-	initialize_forks(&atad, &data);
-	initialize_philo(&atad, &data);
+	initialize_forks(&atad);
+	initialize_philo(&atad);
+	initialize_thread(&atad, &data);
+	destroy_mutex(&data);
+}

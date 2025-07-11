@@ -6,7 +6,7 @@
 /*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:27:20 by abtouait          #+#    #+#             */
-/*   Updated: 2025/07/10 19:06:51 by abder            ###   ########.fr       */
+/*   Updated: 2025/07/11 15:42:01 by abder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_info
 	pthread_t 		th;
 	t_table			*table; //pointeur vers la struct t_table(en gros toutes ces infos)
 	size_t			last_meal_time;
+	int nbr_meals;
+	pthread_mutex_t meal_mutex;
 	
 }t_info;
 
@@ -63,9 +65,21 @@ void put_values_struct(t_table *data, char **argv, int argc);
 
 //philo
 void one_philo(t_table *data);
-void philo_sleep(t_table *data);
-void philo_thinking(t_table *data);
-void initialize_forks(t_info *data, t_table *atad);
-void initialize_philo(t_info *data, t_table *atad);
+void philo_sleep(t_info *data);
+void philo_thinking(t_info *data);
+void initialize_forks(t_table *atad);
+void initialize_philo(t_table *atad);
+
+//philo_2
+int check_death(t_table *atad);
+void monitor_death(t_table *atad);
+void *monitor_routine(void *arg);
+void initialize_thread(t_info *data, t_table *atad);
+void *philo_routine(void *arg);
+
+
+//philo_3
+void philo_eat(t_info *data);
+void destroy_mutex(t_info *data);
 
 #endif
