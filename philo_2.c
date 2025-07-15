@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 14:04:47 by abder             #+#    #+#             */
-/*   Updated: 2025/07/11 14:44:54 by abder            ###   ########.fr       */
+/*   Updated: 2025/07/11 21:53:18 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ int check_death(t_table *atad)
 void monitor_death(t_table *atad)
 {
     pthread_t thread;
-    pthread_create(thread, NULL, &monitor_routine, atad);
+    pthread_create(&thread, NULL, &monitor_routine, atad);
     pthread_join(thread, NULL);
 }
 void *monitor_routine(void *arg)
 {
     t_table *atad = (t_table *)arg;
+    
     while (atad->dead_flag != 1)
     {
         check_death(atad);
@@ -46,7 +47,7 @@ void *monitor_routine(void *arg)
     return NULL;
 }
 
-void initialize_thread(t_info *data, t_table *atad)
+void initialize_thread(t_table *atad)
 {
     int i;
 
@@ -66,7 +67,6 @@ void initialize_thread(t_info *data, t_table *atad)
 }
 void *philo_routine(void *arg)
 {
-  
     t_info *data = (t_info *)arg;
     
     while (data->table->dead_flag != 1)

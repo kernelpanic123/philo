@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 00:06:06 by abtouait          #+#    #+#             */
-/*   Updated: 2025/07/11 15:31:34 by abder            ###   ########.fr       */
+/*   Updated: 2025/07/15 19:27:04 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void philo_sleep(t_info *data)
 }
 void philo_thinking(t_info *data)
 {
-	printf("%lu Philo %d is thinking\n", (get_time_in_u() - data->table->start_time), data->id);
+	printf("%lu Philosopher %d is thinking\n", (get_time_in_u() - data->table->start_time), data->id);
 }
 void initialize_forks(t_table *atad)
 {

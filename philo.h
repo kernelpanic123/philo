@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:27:20 by abtouait          #+#    #+#             */
-/*   Updated: 2025/07/11 15:42:01 by abder            ###   ########.fr       */
+/*   Updated: 2025/07/11 21:15:13 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void initialize_philo(t_table *atad);
 int check_death(t_table *atad);
 void monitor_death(t_table *atad);
 void *monitor_routine(void *arg);
-void initialize_thread(t_info *data, t_table *atad);
+void initialize_thread(t_table *atad);
 void *philo_routine(void *arg);
 
 
