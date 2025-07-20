@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 14:04:47 by abder             #+#    #+#             */
-/*   Updated: 2025/07/19 22:36:49 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/07/20 07:17:15 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void *philo_routine(void *arg)
 {
     t_info *data = (t_info *)arg;
     
+	if (data->id % 2 == 0)
+		ft_usleep(10);
     while (data->table->dead_flag != 1)
     {
         philo_thinking(data);
