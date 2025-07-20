@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:27:20 by abtouait          #+#    #+#             */
-/*   Updated: 2025/07/11 21:15:13 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/07/19 00:06:05 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_info
 	size_t			last_meal_time;
 	int nbr_meals;
 	pthread_mutex_t meal_mutex;
+	pthread_mutex_t printf_mutex;
 	
 }t_info;
 
@@ -81,5 +82,6 @@ void *philo_routine(void *arg);
 //philo_3
 void philo_eat(t_info *data);
 void destroy_mutex(t_info *data);
+void mutex_printf(t_info *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 00:06:06 by abtouait          #+#    #+#             */
-/*   Updated: 2025/07/15 19:27:04 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/07/19 01:55:06 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,16 @@ void one_philo(t_table *data)
 }
 void philo_sleep(t_info *data)
 {
-	printf("%lu Philosopher %d is sleeping\n", (get_time_in_u() - data->table->start_time), data->id);
+	pthread_mutex_lock(&data->printf_mutex);
+	printf("%lu %d is sleeping\n", (get_time_in_u() - data->table->start_time), data->id);
+	pthread_mutex_unlock(&data->printf_mutex);
 	ft_usleep(data->table->time_to_sleep);
 }
 void philo_thinking(t_info *data)
-{
-	printf("%lu Philosopher %d is thinking\n", (get_time_in_u() - data->table->start_time), data->id);
+{	
+	pthread_mutex_lock(&data->printf_mutex);
+	printf("%lu %d is thinking\n", (get_time_in_u() - data->table->start_time), data->id);
+	pthread_mutex_unlock(&data->printf_mutex);
 }
 void initialize_forks(t_table *atad)
 {
@@ -39,6 +43,7 @@ void initialize_forks(t_table *atad)
 		pthread_mutex_init(&atad->forks[i], NULL);
 		i++;
 	}
+	pthread_mutex_init(&atad->philos->printf_mutex, NULL);
 }
 void initialize_philo(t_table *atad)
 {

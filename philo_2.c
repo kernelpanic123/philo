@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 14:04:47 by abder             #+#    #+#             */
-/*   Updated: 2025/07/11 21:53:18 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/07/19 22:36:49 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ void *philo_routine(void *arg)
     
     while (data->table->dead_flag != 1)
     {
-        philo_eat(data);
-        philo_sleep(data);
         philo_thinking(data);
+        philo_eat(data);
+        philo_sleep(data);//commencer par penser au debut et faire start en fivisant par 2
     }
     return NULL;
 }
