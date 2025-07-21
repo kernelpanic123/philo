@@ -6,7 +6,7 @@
 /*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 01:21:58 by abtouait          #+#    #+#             */
-/*   Updated: 2025/07/10 21:15:13 by abder            ###   ########.fr       */
+/*   Updated: 2025/07/21 08:14:39 by abder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,13 @@ void put_values_struct(t_table *data, char **argv, int argc)
     if (argc == 6)
         data->must_eat = ft_atoi(argv[5]);
     data->start_time = get_time_in_u();
+}
+int dead_protected(t_table *data)
+{
+    int death;
+
+    pthread_mutex_lock(&data->mutex_dead);
+    death = data->dead_flag;
+    pthread_mutex_unlock(&data->mutex_dead);
+    return (death);
 }

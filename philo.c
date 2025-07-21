@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 00:06:06 by abtouait          #+#    #+#             */
-/*   Updated: 2025/07/19 01:55:06 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/07/21 07:26:26 by abder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void initialize_forks(t_table *atad)
 		pthread_mutex_init(&atad->forks[i], NULL);
 		i++;
 	}
-	pthread_mutex_init(&atad->philos->printf_mutex, NULL);
 }
 void initialize_philo(t_table *atad)
 {
@@ -57,7 +56,9 @@ void initialize_philo(t_table *atad)
 		atad->philos[i].table = atad;
 		atad->philos[i].l_fork = &atad->forks[i]; //on donne au pointeur l fork l'adresse du tableau mutex a l'indewx i 
 		atad->philos[i].r_fork = &atad->forks[(i + 1) % atad->philo_nbr]; //modulo pour que le dernier philosophe a la premiere fourchette
+		atad->philos[i].last_meal_time = atad->start_time;
 		i++;
 	}
-	
+	pthread_mutex_init(&atad->philos->printf_mutex, NULL);
+	pthread_mutex_init(&atad->mutex_dead, NULL);	
 }

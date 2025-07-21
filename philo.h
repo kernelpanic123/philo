@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:27:20 by abtouait          #+#    #+#             */
-/*   Updated: 2025/07/19 00:06:05 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/07/21 07:47:05 by abder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_info
 	pthread_t 		th;
 	t_table			*table; //pointeur vers la struct t_table(en gros toutes ces infos)
 	size_t			last_meal_time;
-	int nbr_meals;
+	int 			nbr_meals;
 	pthread_mutex_t meal_mutex;
 	pthread_mutex_t printf_mutex;
 	
@@ -47,7 +47,9 @@ typedef struct s_table
 	pthread_mutex_t *forks;
 	t_info *philos;
 	int		dead_flag;
-	
+	pthread_t monitor_thread;
+	pthread_mutex_t mutex_dead;
+
 }t_table;
 
 //ultis
@@ -63,6 +65,7 @@ int check_str(char *str);
 
 //utils2
 void put_values_struct(t_table *data, char **argv, int argc);
+int dead_protected(t_table *data);
 
 //philo
 void one_philo(t_table *data);
