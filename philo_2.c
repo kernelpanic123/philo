@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 14:04:47 by abder             #+#    #+#             */
-/*   Updated: 2025/07/21 23:16:54 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/07/22 05:29:18 by abder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ void	*monitor_routine(void *arg)
 	atad = (t_table *)arg;
 	while (!dead_protected(atad))
 	{
-		check_death(atad);
+		if (check_death(atad))
+			break ;
+		if (check_meal_max(atad))
+			break ;
 		ft_usleep(10);
 	}
 	return (NULL);
@@ -91,3 +94,30 @@ void	*philo_routine(void *arg)
 	}
 	return (NULL);
 }
+int	check_meal_max(t_table *atad)
+{
+	int	i;
+	int	max_meal;
+
+	if (atad->must_eat <= 0)
+		return (0);
+	i = 0;
+	max_meal = 0;
+	while (i < atad->philo_nbr)
+	{
+		pthread_mutex_lock(&atad->philos[i].meal_mutex);
+		if (atad->philos[i].nbr_meals >= atad->must_eat)
+			max_meal++;
+		pthread_mutex_unlock(&atad->philos[i].meal_mutex);
+		i++;
+	}
+	if (max_meal == atad->philo_nbr)
+	{
+		pthread_mutex_lock(&atad->mutex_dead);
+		atad->dead_flag = 1;
+		pthread_mutex_unlock(&atad->mutex_dead);
+		return (1);
+	}
+	return (0);
+}
+

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 00:06:06 by abtouait          #+#    #+#             */
-/*   Updated: 2025/07/21 23:24:05 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/07/22 05:23:36 by abder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,10 @@ void	initialize_philo(t_table *atad)
 		atad->philos[i].l_fork = &atad->forks[i];
 		atad->philos[i].r_fork = &atad->forks[(i + 1) % atad->philo_nbr];
 		atad->philos[i].last_meal_time = atad->start_time;
+		atad->philos[i].nbr_meals = 0;
+		pthread_mutex_init(&atad->philos[i].printf_mutex, NULL);
+		pthread_mutex_init(&atad->philos[i].meal_mutex, NULL);
 		i++;
 	}
-	pthread_mutex_init(&atad->philos->printf_mutex, NULL);
 	pthread_mutex_init(&atad->mutex_dead, NULL);
 }

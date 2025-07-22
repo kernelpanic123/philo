@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:30:17 by abtouait          #+#    #+#             */
-/*   Updated: 2025/07/22 00:20:52 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/07/22 05:25:25 by abder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int argc, char **argv)
 {
 	t_table	data;
-	t_info	atad;
 
 	if (check_arg(argv, argc) != 0)
 		return (0);
@@ -29,5 +28,7 @@ int	main(int argc, char **argv)
 	initialize_forks(&data);
 	initialize_philo(&data);
 	initialize_thread(&data);
-	destroy_mutex(&atad);
+	destroy_mutex(data.philos);
+	free(data.philos);
+	free(data.forks);
 }

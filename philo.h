@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:27:20 by abtouait          #+#    #+#             */
-/*   Updated: 2025/07/22 00:22:29 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/07/22 04:51:31 by abder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	monitor_death(t_table *atad);
 void	*monitor_routine(void *arg);
 void	initialize_thread(t_table *atad);
 void	*philo_routine(void *arg);
+int		check_meal_max(t_table *atad);
 //philo_3
 void	philo_eat(t_info *data);
 void	destroy_mutex(t_info *data);

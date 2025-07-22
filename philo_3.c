@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 20:00:30 by abder             #+#    #+#             */
-/*   Updated: 2025/07/22 00:31:06 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/07/22 05:21:36 by abder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	philo_eat(t_info *data)
 	mutex_printf(data);
 	pthread_mutex_lock(&data->meal_mutex);
 	data->last_meal_time = get_time_in_u();
+	data->nbr_meals = data->nbr_meals + 1;
 	pthread_mutex_unlock(&data->meal_mutex);
 	ft_usleep(data->table->time_to_eat);
 	pthread_mutex_unlock(data->r_fork);
@@ -56,7 +57,9 @@ void	destroy_mutex(t_info *data)
 	i = 0;
 	while (i < data->table->philo_nbr)
 	{
-		pthread_mutex_destroy(&data[i].meal_mutex);//?>?????????
+		pthread_mutex_destroy(&data->table->philos[i].meal_mutex);
+		pthread_mutex_destroy(&data->table->philos[i].printf_mutex);
 		i++;
 	}
+	pthread_mutex_destroy(&data->table->mutex_dead);
 }
