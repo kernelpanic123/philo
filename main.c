@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:30:17 by abtouait          #+#    #+#             */
-/*   Updated: 2025/07/22 05:25:25 by abder            ###   ########.fr       */
+/*   Updated: 2025/07/22 06:53:59 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 
 	if (check_arg(argv, argc) != 0)
 		return (0);
-	init_struct(&data, argc);
+	init_struct(&data);
 	put_values_struct(&data, argv, argc);
 	if (data.philo_nbr == 1)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 14:04:47 by abder             #+#    #+#             */
-/*   Updated: 2025/07/22 05:29:18 by abder            ###   ########.fr       */
+/*   Updated: 2025/07/22 05:57:16 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	*philo_routine(void *arg)
 	}
 	return (NULL);
 }
+
 int	check_meal_max(t_table *atad)
 {
 	int	i;
@@ -120,4 +121,3 @@ int	check_meal_max(t_table *atad)
 	}
 	return (0);
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 10:52:30 by abtouait          #+#    #+#             */
-/*   Updated: 2025/07/22 05:39:25 by abder            ###   ########.fr       */
+/*   Updated: 2025/07/22 06:53:40 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ft_atoi(const char *str)
 	return (nombre * signe);
 }
 
-void	init_struct(t_table *data, int argc)
+void	init_struct(t_table *data)
 {
 	data->philo_nbr = 0;
 	data->time_to_die = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:27:20 by abtouait          #+#    #+#             */
-/*   Updated: 2025/07/22 04:51:31 by abder            ###   ########.fr       */
+/*   Updated: 2025/07/22 06:53:47 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_info
 typedef struct s_table
 {
 	int				philo_nbr;
-	long			time_to_die;
+	size_t			time_to_die;
 	long			time_to_sleep;
 	long			time_to_eat;
 	long			must_eat;
@@ -55,7 +55,7 @@ typedef struct s_table
 int		ft_isdigit(int c);
 int		ft_usleep(size_t milliseconds);
 size_t	get_time_in_u(void);
-void	init_struct(t_table *data, int argc);
+void	init_struct(t_table *data);
 int		ft_atoi(const char *str);
 
 //parse
