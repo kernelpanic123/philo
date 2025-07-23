@@ -3,36 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   philo_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 14:04:47 by abder             #+#    #+#             */
-/*   Updated: 2025/07/23 06:47:16 by abder            ###   ########.fr       */
+/*   Updated: 2025/07/23 07:45:31 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int check_death(t_table *atad)
+int	check_death(t_table *atad)
 {
-    int i = 0;
-    while (i < atad->philo_nbr)
-    {
-        pthread_mutex_lock(&atad->philos[i].meal_mutex); // Verrou avant lecture
-        if ((get_time_in_u() - atad->philos[i].last_meal_time) > atad->time_to_die)
-        {
-            pthread_mutex_unlock(&atad->philos[i].meal_mutex);
-            pthread_mutex_lock(&atad->printf_mutex); // Utilisez un mutex global pour printf
-            printf("%lu %d died\n", (get_time_in_u() - atad->start_time), atad->philos[i].id);
-            pthread_mutex_unlock(&atad->printf_mutex);
-            pthread_mutex_lock(&atad->mutex_dead);
-            atad->dead_flag = 1;
-            pthread_mutex_unlock(&atad->mutex_dead);
-            return (1);
-        }
-        pthread_mutex_unlock(&atad->philos[i].meal_mutex); // Déverrouillez après lecture
-        i++;
-    }
-    return (0);
+	int	i;
+
+	i = 0;
+	while (i < atad->philo_nbr)
+	{
+		pthread_mutex_lock(&atad->philos[i].meal_mutex);
+		if ((get_time_in_u() - atad->philos[i].last_meal_time)
+			> atad->time_to_die)
+		{
+			pthread_mutex_unlock(&atad->philos[i].meal_mutex);
+			pthread_mutex_lock(&atad->printf_mutex);
+			printf("%lu %d died\n", (get_time_in_u() - atad->start_time),
+				atad->philos[i].id);
+			pthread_mutex_unlock(&atad->printf_mutex);
+			pthread_mutex_lock(&atad->mutex_dead);
+			atad->dead_flag = 1;
+			pthread_mutex_unlock(&atad->mutex_dead);
+			return (1);
+		}
+		pthread_mutex_unlock(&atad->philos[i].meal_mutex);
+		i++;
+	}
+	return (0);
 }
 
 void	*monitor_routine(void *arg)

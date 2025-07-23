@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 00:06:06 by abtouait          #+#    #+#             */
-/*   Updated: 2025/07/23 07:21:31 by abder            ###   ########.fr       */
+/*   Updated: 2025/07/23 07:42:45 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,19 @@ void	initialize_forks(t_table *atad)
 	}
 }
 
-//le premier philo prends la fourchette droite en premier pour casser la symetrie (deadlock)
-//et modulo pour dernier philo qu'il retombe sur la premier fourchette
-void initialize_philo(t_table *atad)
+//1st prends la fourchette droite en premier pour casser la symetrie (deadlock)
+//et modulo dernier philo qu'il retombe sur la premiere fourchette
+void	initialize_philo(t_table *atad)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	atad->philos = malloc(sizeof(t_info) * (atad->philo_nbr));
-	
 	while (i < atad->philo_nbr)
 	{
 		atad->philos[i].id = i + 1;
 		atad->philos[i].table = atad;
-		if (i == 0) 
+		if (i == 0)
 		{
 			atad->philos[i].l_fork = &atad->forks[(i + 1) % atad->philo_nbr];
 			atad->philos[i].r_fork = &atad->forks[i];

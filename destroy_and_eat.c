@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 20:00:30 by abder             #+#    #+#             */
-/*   Updated: 2025/07/23 06:56:18 by abder            ###   ########.fr       */
+/*   Updated: 2025/07/23 07:43:53 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,4 @@ void	destroy_mutex(t_info *data)
 	}
 	pthread_mutex_destroy(&data->table->mutex_dead);
 	pthread_mutex_destroy(&data->table->printf_mutex);
-	
 }
