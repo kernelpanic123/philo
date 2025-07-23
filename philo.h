@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: abder <abder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:27:20 by abtouait          #+#    #+#             */
-/*   Updated: 2025/07/22 06:53:47 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/07/23 06:46:22 by abder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct s_info
 	size_t			last_meal_time;
 	int				nbr_meals;
 	pthread_mutex_t	meal_mutex;
-	pthread_mutex_t	printf_mutex;
 }	t_info;
 
 typedef struct s_table
@@ -48,6 +47,7 @@ typedef struct s_table
 	int				dead_flag;
 	pthread_t		monitor_thread;
 	pthread_mutex_t	mutex_dead;
+	pthread_mutex_t	printf_mutex;
 
 }	t_table;
 
